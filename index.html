@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Neha Dey! 🎂</title>
+<style>
+  :root{
+    --cream:#fff8f0; --ink:#3b2f2f; --rose:#e2557b; --gold:#e8a13c;
+    --leaf:#5f9e6e; --card:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background:var(--cream); color:var(--ink); overflow-x:hidden;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center;
+    position:relative; padding:2rem;
+    background:
+      radial-gradient(circle at 20% 20%, #ffe3ec 0%, transparent 40%),
+      radial-gradient(circle at 80% 30%, #fff1d6 0%, transparent 45%),
+      radial-gradient(circle at 50% 90%, #e2f3e6 0%, transparent 45%),
+      var(--cream);
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 8vw, 5.5rem); font-weight:800; line-height:1.05;
+    background:linear-gradient(90deg, var(--rose), var(--gold));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:pop .9s cubic-bezier(.2,1.6,.4,1) both;
+  }
+  .hero .name{
+    display:block; font-size:clamp(3.2rem, 12vw, 8rem); letter-spacing:.02em;
+  }
+  .hero p.sub{
+    margin-top:1.2rem; font-size:clamp(1.05rem, 2.5vw, 1.4rem); color:#7a6a6a;
+    animation:fadeUp 1s .35s both;
+  }
+  .badge{
+    display:inline-block; margin-top:1.6rem; padding:.55rem 1.3rem; border-radius:999px;
+    background:var(--ink); color:#fff; font-size:.95rem; letter-spacing:.12em;
+    text-transform:uppercase; animation:fadeUp 1s .5s both;
+  }
+  @keyframes pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+  @keyframes fadeUp{from{transform:translateY(24px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+  .float{position:absolute; font-size:2.4rem; opacity:.9; animation:drift 7s ease-in-out infinite; pointer-events:none; filter:drop-shadow(0 8px 10px rgba(0,0,0,.12));}
+  @keyframes drift{
+    0%,100%{transform:translateY(0) rotate(-6deg)}
+    50%{transform:translateY(-28px) rotate(8deg)}
+  }
+  .scroll-hint{position:absolute; bottom:1.6rem; font-size:1.6rem; animation:bounce 1.6s infinite; color:var(--rose);}
+  @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+
+  /* ---------- sections ---------- */
+  section{padding:5rem 1.5rem; max-width:1000px; margin:0 auto;}
+  .sec-title{
+    text-align:center; font-size:clamp(1.8rem,5vw,2.6rem); font-weight:800; margin-bottom:.5rem;
+  }
+  .sec-sub{text-align:center; color:#8a7a7a; margin-bottom:3rem; font-size:1.05rem;}
+
+  .card{
+    background:var(--card); border-radius:22px; padding:2.4rem;
+    box-shadow:0 14px 40px rgba(59,47,47,.08);
+    display:flex; gap:2.4rem; align-items:center; flex-wrap:wrap;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .card:hover{transform:translateY(-6px); box-shadow:0 22px 50px rgba(59,47,47,.14);}
+  .card .art{font-size:6.5rem; line-height:1; animation:wiggle 3.2s ease-in-out infinite;}
+  @keyframes wiggle{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+  .card h3{font-size:1.5rem; margin-bottom:.6rem;}
+  .card p{color:#6f6060; line-height:1.7; max-width:46ch;}
+
+  /* biryani steam */
+  .steam{position:relative; display:inline-block;}
+  .steam span{
+    position:absolute; left:50%; bottom:100%; font-size:1.4rem; opacity:0;
+    animation:steam 2.6s ease-out infinite;
+  }
+  .steam span:nth-child(2){animation-delay:.8s; margin-left:-14px;}
+  .steam span:nth-child(3){animation-delay:1.6s; margin-left:10px;}
+  @keyframes steam{
+    0%{opacity:0; transform:translateY(6px) scale(.7);}
+    30%{opacity:.85;}
+    100%{opacity:0; transform:translateY(-46px) scale(1.25);}
+  }
+
+  /* animals */
+  .zoo{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1.2rem;}
+  .animal{
+    background:var(--card); border-radius:18px; padding:1.6rem 1rem; text-align:center;
+    box-shadow:0 10px 26px rgba(59,47,47,.07); cursor:pointer;
+    transition:transform .25s ease;
+  }
+  .animal:hover{transform:translateY(-6px) scale(1.04);}
+  .animal .emo{font-size:3rem; display:block; transition:transform .3s;}
+  .animal:hover .emo{transform:scale(1.25) rotate(-8deg);}
+  .animal .nm{margin-top:.6rem; font-weight:700;}
+  .animal .fact{font-size:.82rem; color:#958585; margin-top:.25rem;}
+
+  /* cake + candles */
+  .cake-zone{text-align:center;}
+  .cake{font-size:7rem; position:relative; display:inline-block; user-select:none;}
+  .flame{display:inline-block; animation:flick .35s ease-in-out infinite alternate; transform-origin:bottom center;}
+  @keyframes flick{from{transform:scale(1) rotate(-3deg)}to{transform:scale(1.15) rotate(3deg)}}
+  .cake.out .flame{display:none;}
+  .cake.out{filter:grayscale(.35);}
+  .btn{
+    margin-top:1.8rem; display:inline-block; border:none; cursor:pointer;
+    background:var(--rose); color:#fff; font-size:1.05rem; font-weight:700;
+    padding:.9rem 2.2rem; border-radius:999px;
+    box-shadow:0 10px 24px rgba(226,85,123,.35);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover{transform:translateY(-3px); box-shadow:0 16px 30px rgba(226,85,123,.45);}
+  .btn:active{transform:translateY(0);}
+  .wish-msg{margin-top:1.2rem; font-size:1.15rem; font-weight:700; color:var(--gold); min-height:1.6em; opacity:0; transition:opacity .6s;}
+  .wish-msg.show{opacity:1;}
+
+  footer{text-align:center; padding:3rem 1rem 4rem; color:#9b8b8b; font-size:.95rem;}
+  footer b{color:var(--rose);}
+
+  #confetti{position:fixed; inset:0; pointer-events:none; z-index:50;}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="float" style="top:12%;left:8%;">🎈</span>
+  <span class="float" style="top:20%;right:10%;animation-delay:1.2s;">🐘</span>
+  <span class="float" style="bottom:22%;left:12%;animation-delay:.6s;">🦋</span>
+  <span class="float" style="bottom:18%;right:14%;animation-delay:1.8s;">🎉</span>
+  <span class="float" style="top:48%;left:4%;animation-delay:2.4s;font-size:1.8rem;">🐱</span>
+  <span class="float" style="top:42%;right:5%;animation-delay:.9s;font-size:1.8rem;">🍛</span>
+
+  <h1>Happy birthday<span class="name">Neha Dey</span></h1>
+  <p class="sub">To the world's best sister — may your day be as wonderful as you are.</p>
+  <span class="badge">🎂 It's your special day 🎂</span>
+  <div class="scroll-hint">⬇</div>
+</header>
+
+<!-- BIRIYANI -->
+<section id="biriyani">
+  <h2 class="sec-title">The biriyani queen 👑</h2>
+  <p class="sec-sub">Official title, earned one delicious plate at a time.</p>
+  <div class="card">
+    <div class="art">
+      <span class="steam">
+        🍛
+        <span>♨️</span><span>♨️</span><span>♨️</span>
+      </span>
+    </div>
+    <div>
+      <h3>May your birthday be full of flavour</h3>
+      <p>On your birthday, Neha, we wish you endless happiness, laughter that echoes,
+      dreams that come true — and of course, a giant handi of your favourite biriyani,
+      extra masala, extra love. You deserve every single grain of joy today. 💛</p>
+    </div>
+  </div>
+</section>
+
+<!-- ANIMALS -->
+<section id="animals">
+  <h2 class="sec-title">The animal whisperer 🐾</h2>
+  <p class="sec-sub">Because every creature feels at home around you. Tap a friend to say hi!</p>
+  <div class="zoo">
+    <div class="animal"><span class="emo">🐶</span><div class="nm">Buddy</div><div class="fact">Loyal &amp; cuddly</div></div>
+    <div class="animal"><span class="emo">🐱</span><div class="nm">Misty</div><div class="fact">Soft &amp; sassy</div></div>
+    <div class="animal"><span class="emo">🐘</span><div class="nm">Gaja</div><div class="fact">Gentle giant</div></div>
+    <div class="animal"><span class="emo">🦋</span><div class="nm">Tara</div><div class="fact">Beautiful &amp; free</div></div>
+    <div class="animal"><span class="emo">🐰</span><div class="nm">Puff</div><div class="fact">Hoppy &amp; sweet</div></div>
+    <div class="animal"><span class="emo">🦜</span><div class="nm">Rio</div><div class="fact">Loud &amp; lovely</div></div>
+  </div>
+</section>
+
+<!-- CAKE -->
+<section id="cake">
+  <h2 class="sec-title">Make a wish 🌟</h2>
+  <p class="sec-sub">Close your eyes, wish for something wonderful… then blow out the candles!</p>
+  <div class="cake-zone">
+    <div class="cake" id="cakeEmoji">
+      🎂
+    </div>
+    <br>
+    <button class="btn" id="blowBtn">🕯️ Blow the candles</button>
+    <div class="wish-msg" id="wishMsg">✨ Your wish is on its way, Neha. Happy birthday! ✨</div>
+  </div>
+</section>
+
+<footer>
+  Made with 💕 for <b>Neha Dey</b> — happy birthday, sister! 🎈🐾🍛
+</footer>
+
+<script>
+/* ---------- confetti ---------- */
+const cv = document.getElementById('confetti'), ctx = cv.getContext('2d');
+let parts = [], raf = null;
+function resize(){ cv.width = innerWidth; cv.height = innerHeight; }
+addEventListener('resize', resize); resize();
+
+const COLORS = ['#e2557b','#e8a13c','#5f9e6e','#6aa5e8','#b07fe0','#f3d34a'];
+function burst(n = 160){
+  for(let i=0;i<n;i++){
+    parts.push({
+      x: innerWidth/2 + (Math.random()-0.5)*innerWidth*0.6,
+      y: innerHeight*0.35 + (Math.random()-0.5)*60,
+      vx:(Math.random()-0.5)*11,
+      vy: Math.random()*-11 - 3,
+      s: Math.random()*8+4,
+      c: COLORS[(Math.random()*COLORS.length)|0],
+      r: Math.random()*Math.PI*2, vr:(Math.random()-0.5)*0.3,
+      life:1
+    });
+  }
+  if(!raf) tick();
+}
+function tick(){
+  ctx.clearRect(0,0,cv.width,cv.height);
+  parts = parts.filter(p => p.life > 0);
+  for(const p of parts){
+    p.vy += 0.32; p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life -= 0.006;
+    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r);
+    ctx.globalAlpha = Math.max(p.life,0);
+    ctx.fillStyle = p.c; ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s*0.6);
+    ctx.restore();
+  }
+  if(parts.length){ raf = requestAnimationFrame(tick); }
+  else { raf = null; ctx.clearRect(0,0,cv.width,cv.height); }
+}
+setTimeout(()=>burst(200), 600);   // opening celebration
+setInterval(()=>{ if(document.visibilityState==='visible') burst(30); }, 6000);
+
+/* ---------- blow candles ---------- */
+const cake = document.getElementById('cakeEmoji');
+const btn  = document.getElementById('blowBtn');
+const msg  = document.getElementById('wishMsg');
+btn.addEventListener('click', () => {
+  if(cake.classList.contains('out')){
+    cake.classList.remove('out');
+    msg.classList.remove('show');
+    btn.textContent = '🕯️ Blow the candles';
+  } else {
+    cake.classList.add('out');
+    msg.classList.add('show');
+    btn.textContent = '🔥 Relight the candles';
+    burst(260);
+  }
+});
+
+/* ---------- animal sounds ---------- */
+const barks = ['Woof! 🐶','Meow~ 🐱','Toot! 🐘','Flutter ✨','Hopping hi! 🐰','Squawk! 🦜'];
+document.querySelectorAll('.animal').forEach((el,i)=>{
+  el.addEventListener('click', ()=>{
+    const old = el.querySelector('.fact').textContent;
+    el.querySelector('.fact').textContent = barks[i % barks.length];
+    setTimeout(()=> el.querySelector('.fact').textContent = old, 1200);
+  });
+});
+</script>
+</body>
+</html>
